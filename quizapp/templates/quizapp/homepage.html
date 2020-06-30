@@ -1,0 +1,15 @@
+{% extends 'quizapp/base.html' %}
+
+{% block content %}
+	{% if user.is_authenticated%}
+        {% for quiz in quizzes %}
+        	<h2  class="quiz-link">
+                <a href="{% url 'attempt_quiz' primkey=quiz.pk%}">{{quiz.title}}</a>
+            </h2>
+        	<h4 class="published-date">{{quiz.created_date| date:'d-m-Y'}}</h4>
+            <br>
+        {% endfor %}
+    {%else%}
+        <h2>Please <a href="{% url 'login' %}">login</a> to access content</h2>
+    {%endif%}
+{% endblock %}

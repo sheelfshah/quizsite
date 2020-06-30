@@ -1,0 +1,19 @@
+{% extends 'quizapp/base.html'%}
+{% block content %}
+{% if user.is_authenticated%}
+	<h2>{{quiz.title}}</h2>
+	<h3>
+		You have successfully attempted this quiz.
+		You will be notified of the results soon.
+		<br>
+		Thanks for particpating!
+	</h3>
+	<h4>
+	<a href="/">
+	    Back to Home
+	</a>
+	</h4>
+{%else%}
+    <h2>Please <a href="{% url 'login' %}">login</a> to access content</h2>
+{%endif%}
+{% endblock %}

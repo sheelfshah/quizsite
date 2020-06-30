@@ -1,0 +1,10 @@
+{% extends "quizapp/base.html" %}
+
+{% block content %}
+   
+    <form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+        <h2>Incorrect Credentials :(</h2>
+        <h3>Retry logging in <a href="{%url 'login'%}">here</a></h3>
+    </form>
+{% endblock %}
