@@ -3,14 +3,13 @@
 {% if user.is_authenticated%}
 	<h2>{{quiz.title}}</h2>
 	<h3>
-		You have successfully attempted this quiz.
-		You will be notified of the results soon.
+		Result for this quiz has not yet been published by the teacher.
 		<br>
-		Thanks for participating!
+		Use this free time to get some excercise!
 	</h3>
 	<h4>
-	<a href="{% url 'attempt_quiz' primkey=quiz.pk%}">
-	    Back to Quiz
+	<a href="/">
+	    Back to Home
 	</a>
 	</h4>
 {%else%}

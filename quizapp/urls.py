@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views
 from . import quiz_views
-from . import quiz_attempt_views
+from . import quiz_attempt_views, quiz_result_views
 
 urlpatterns = [
     path('', views.index, name='homepage'),
@@ -18,6 +18,8 @@ urlpatterns = [
          quiz_attempt_views.attempt_quiz, name="attempt_quiz"),
     path('quiz/<int:primkey>/end',
          quiz_attempt_views.submit_quiz, name="quiz_end"),
+    path('quiz/<int:primkey>/evaluate',
+         quiz_result_views.evaluate_quiz, name="quiz_evaluate"),
     path('question/<int:primkey>/add_choice',
          quiz_views.add_choice, name="add_choice"),
     path('question/<int:primkey>/edit',

@@ -71,8 +71,10 @@ input{
 .attempt-form button{
     background-color: #33ABF9;
     color: #ffffff;
-    border: 2;
-    border-radius: 10px;
+    border: solid;
+    border-color: #000000;
+    border-width: 1px;
+    border-radius: 6px;
 }
 
 .attempt-form{
@@ -93,4 +95,13 @@ input{
 
 .post {
     margin-bottom: 70px;
+}
+
+.button{
+    background-color: #33ABF9;
+    color: #ffffff;
+    border: solid;
+    border-color: #000000;
+    border-width: 1px;
+    border-radius: 6px;
 }

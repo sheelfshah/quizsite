@@ -1,2 +1,2 @@
 TODO: make the site more beautiful
-Todo: if nothing selected...
+Todo: get, send results

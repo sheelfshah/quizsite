@@ -51,6 +51,7 @@ def attempt_question(request, primkey):
             for c_pk in temp:
                 choice = get_object_or_404(Choice, pk=c_pk)
                 choice.choosers.add(request.user)
+                choice.votes += 1
                 choice.save()
         if q_next_id == 0:
             return redirect('quiz_end', primkey=quiz.pk)
