@@ -9,7 +9,7 @@
 				<form method="POST" class="attempt-form">
 					{%csrf_token%}
 					{{form.as_p}}
-					<button type="submit" class="save-button">
+					<button type="submit" class="save-button" id="submit-button">
 						{% if not next %}
 							Save and Submit
 						{%else%}
@@ -18,6 +18,9 @@
 					</button>
 				</form>
 			</h3>
+			<h2><small>
+				Time Remaining: <span id="clock" style="color: #00ff00"></span>
+			</small></h2>
 		{% else %}
 			{% if next %}
 				<h3>You have already attempted this question. Go to the 
@@ -33,4 +36,35 @@
 {%else%}
     <h2>Please <a href="{% url 'login' %}">login</a> to access content</h2>
 {%endif%}
+<script>
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            button=document.getElementById("submit-button");
+            button.click();
+        }
+        if (timer<30){
+        	display.setAttribute("style", "color: orange;")
+        }
+        if (timer<10){
+        	display.setAttribute("style", "color: red;")
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = {{time}},
+        display = document.getElementById("clock");
+    startTimer(fiveMinutes, display);
+};
+</script>
 {% endblock %}

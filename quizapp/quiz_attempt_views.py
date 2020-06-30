@@ -60,4 +60,5 @@ def attempt_question(request, primkey):
     else:
         form = AttemptForm(choices)
     return render(request, 'quizapp/attempt_question.html', {"form": form, "question": question,
-                                                             "next": q_next_id, "attempted": prev_attempt})
+                                                             "next": q_next_id, "attempted": prev_attempt,
+                                                             "time": question.time})

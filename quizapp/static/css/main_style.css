@@ -78,7 +78,7 @@ input{
 }
 
 .attempt-form{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 200px;
 }
 
