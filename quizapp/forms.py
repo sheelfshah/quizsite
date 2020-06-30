@@ -15,7 +15,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = {}
+        fields = {'email'}
 
 
 class QuizForm(forms.ModelForm):

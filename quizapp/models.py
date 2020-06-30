@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    isTeacher = models.BooleanField(default=False)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name="profile")
+    email = models.EmailField(max_length=254)
 
     def __str__(self):
         return self.user.username
@@ -29,6 +30,8 @@ class Question(models.Model):
     question_text = models.CharField(max_length=1000)
     quiz = models.ForeignKey(
         Quiz, on_delete=models.CASCADE, related_name="questions")
+    attempters = models.ManyToManyField(
+        User, related_name="attempted_questions")
 
     def __str__(self):
         return self.title

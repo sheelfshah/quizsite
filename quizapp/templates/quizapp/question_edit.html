@@ -10,14 +10,18 @@
 		</h3>
 		<br>
 	{% endfor %}
+	<h4>
 	<form method="POST" class="post-form">
 		{%csrf_token%}
 		{{form.as_p}}
 		<button type="submit" class="save-button">Add/Edit Choices</button>
 	</form>
+	</h4>
+	<h4>
 	<a href="{% url 'quiz_edit' primkey=quiz.pk%}">
 	    Save All Questions
 	</a>
+	</h4>
 {%else%}
 <h2>You do not have access to this page. Return to where you belong</h2>
 {%endif%}
