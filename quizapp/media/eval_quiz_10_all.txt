@@ -1,0 +1,31 @@
+Demo Quiz
+
+deepashah
+Q1
+How does this website look
+You answered correctly! 
+Correct option(s): 
+	Incredible
+Chosen option(s): 
+	Incredible
+
+deepashah
+Q2    (Don't go back a page or reload this page)
+Can there be multiple answers to a question?
+You answered correctly! 
+Correct option(s): 
+	Yes
+	Yes
+Chosen option(s): 
+	Yes
+	Yes
+
+deepashah
+Mehnat hurts!    (Don't test the timer)
+The results section is plain text and isn't too good looking. Would you like a better results page with graphs and analytics?
+Your answer was incorrect! 
+Correct option(s): 
+	No
+Chosen option(s): 
+	Yes
+

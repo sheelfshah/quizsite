@@ -14,11 +14,6 @@
 	</a>
 	</h4>
 	<h4>
-	{% if quiz.published_date %}
-	<a href="{% url 'quiz_evaluate' primkey=quiz.pk%}">
-	    View Result
-	</a>
-	{% endif %}
 	</h4>
 	{% if user.is_staff %}
 	<h4>
@@ -29,6 +24,12 @@
 	<h4>
 	<a href="{% url 'quiz_evaluate' primkey=quiz.pk%}">
 	    Publish Result
+	</a>
+	</h4>
+	{% elif quiz.published_date %}
+	<h4>
+	<a href="{% url 'quiz_evaluate' primkey=quiz.pk%}">
+	    View Result
 	</a>
 	</h4>
 	{%endif%}

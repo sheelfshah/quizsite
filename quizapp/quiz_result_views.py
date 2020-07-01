@@ -66,7 +66,7 @@ def evaluate_quiz(request, primkey):
                                            correct_choices, chosen_choices)
                 email_text += et
                 email_text += "\n"
-        filename = "quizapp/media/eval_quiz_" + str(quiz.pk) + "_all.txt"
+        filename ="/home/deepashah/deepashah.pythonanywhere.com/media/eval_quiz_" + str(quiz.pk) + "_all.txt"
         f = open(filename, "w")
         f.write(email_text)
         f.close()
@@ -99,7 +99,7 @@ def evaluate_quiz(request, primkey):
         email_text += "/"
         email_text += str(len(questions))
         email_text += "\n"
-        filename = "quizapp/media/eval_quiz_" + \
+        filename = "/home/deepashah/deepashah.pythonanywhere.com/media/eval_quiz_" + \
             str(primkey) + "_user_" + str(request.user.pk) + ".txt"
         f = open(filename, "w")
         f.write(email_text)
