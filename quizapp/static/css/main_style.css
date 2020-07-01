@@ -90,8 +90,9 @@ input{
 }
 
 .list-content {
+    height: auto;
     overflow-y: auto;
-    height: 200px;
+    max-height: 230px;
     margin-left: 20px;
     margin-right: 10px;
     transform: scaleY(0.95);
@@ -103,9 +104,11 @@ input{
 }
 
 .attempt-form{
-    margin-left: 20px;
-    margin-right: 40px;
+    overflow-y: auto;
+    height: auto;
+    max-height: 260px;
     transform: scaleY(0.95);
+    margin-right: 10px;
 }
 
 .attempt-form-super{
@@ -116,9 +119,6 @@ input{
 }
 
 .attempt-form li{
-    overflow-y: auto;
-    height: auto;
-    max-height: 260px;
     margin-left: 10px;
     margin-bottom: 10px;
 }
@@ -137,6 +137,7 @@ input{
     border-width: 1px;
     border-radius: 6px;
     transition-duration: 0.3s;
+    margin-top: 15px;
     margin-right: 15px;
     margin-bottom: 15px;
 }

@@ -6,8 +6,8 @@
 		<div class="attempt">
 			<h2>{{question.question_text}}</h2>
 			<br>
-			<div class="attempt-form-super">
 			<h3>
+				<div class="attempt-form-super">
 				<form method="POST" class="attempt-form">
 					{%csrf_token%}
 					{{form.as_p}}
@@ -19,11 +19,11 @@
 						{%endif%}
 					</button>
 				</form>
+				</div>
 			</h3>
-			</div>
-			<h2><small>
+			<h1><small>
 				Time Remaining: <span id="clock" style="color: #00ff00"></span>
-			</small></h2>
+			</small></h1>
 		</div>
 		{% else %}
 			{% if next %}
