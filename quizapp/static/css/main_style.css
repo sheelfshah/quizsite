@@ -12,6 +12,32 @@ h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
 }
 
+button{
+    margin-top: 10px;
+    background-color: #33ABF9;
+    color: #ffffff;
+    border: solid;
+    border-color: #000000;
+    border-width: 1px;
+    border-radius: 6px;
+    transition-duration: 0.3s;
+    padding: 6px;
+
+}
+
+button:hover{
+    background-color: #ffffff;
+    color: #33ABF9;
+    border: solid;
+    border-color: #000000;
+    border-width: 1px;
+    border-radius: 6px;
+}
+
+.attempt h1, .attempt h2, .attempt h3, .attempt h4{
+    font-family: 'Courier New', Courier;
+}
+
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
     font-size: 36pt;
@@ -57,9 +83,44 @@ input{
     float: right;
 }
 
+.list {
+    border: solid;
+    border-radius: 20px;
+    
+}
+
+.list-content {
+    overflow-y: auto;
+    height: 200px;
+    margin-left: 20px;
+    margin-right: 10px;
+    transform: scaleY(0.95);
+}
+
 .post-form textarea, .post-form input {
     width: 100%;
     float: right;
+}
+
+.attempt-form{
+    margin-left: 20px;
+    margin-right: 40px;
+    transform: scaleY(0.95);
+}
+
+.attempt-form-super{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: solid;
+    border-radius: 20px;
+}
+
+.attempt-form li{
+    overflow-y: auto;
+    height: auto;
+    max-height: 260px;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .attempt-form input{
@@ -75,15 +136,18 @@ input{
     border-color: #000000;
     border-width: 1px;
     border-radius: 6px;
+    transition-duration: 0.3s;
+    margin-right: 15px;
+    margin-bottom: 15px;
 }
 
-.attempt-form{
-    overflow-y: auto;
-    height: 200px;
-}
-
-.attempt-form li{
-    margin-bottom: 10px;
+.attempt-form button:hover{
+    background-color: #ffffff;
+    color: #33ABF9;
+    border: solid;
+    border-color: #000000;
+    border-width: 1px;
+    border-radius: 6px;
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {

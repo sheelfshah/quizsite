@@ -1,10 +1,12 @@
 {% extends 'quizapp/base.html'%}
 {% block content %}
 {% if user.is_authenticated%}
-	<h2><u><center>{{question.title}}</center></u></h2>
+	<h1><u><center>{{question.title}}</center></u></h1>
 		{% if not attempted %}
-			<h3>{{question.question_text}}</h3>
+		<div class="attempt">
+			<h2>{{question.question_text}}</h2>
 			<br>
+			<div class="attempt-form-super">
 			<h3>
 				<form method="POST" class="attempt-form">
 					{%csrf_token%}
@@ -18,9 +20,11 @@
 					</button>
 				</form>
 			</h3>
+			</div>
 			<h2><small>
 				Time Remaining: <span id="clock" style="color: #00ff00"></span>
 			</small></h2>
+		</div>
 		{% else %}
 			{% if next %}
 				<h3>You have already attempted this question. Go to the 
