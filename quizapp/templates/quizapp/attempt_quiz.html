@@ -8,11 +8,13 @@
 		<br>
 		Good Luck!
 	</h3>
+	{% if not quiz.published_date %}
 	<h4>
 	<a href="{% url 'attempt_question' primkey=question.pk%}">
 	    Attempt Quiz
 	</a>
 	</h4>
+	{% endif %}
 	<h4>
 	</h4>
 	{% if user.is_staff %}
