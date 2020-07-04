@@ -66,17 +66,7 @@ def evaluate_quiz(request, primkey):
                                            correct_choices, chosen_choices)
                 email_text += et
                 email_text += "\n"
-        filename ="/home/deepashah/deepashah.pythonanywhere.com/media/eval_quiz_" + str(quiz.pk) + "_all.txt"
-        f = open(filename, "w")
-        f.write(email_text)
-        f.close()
-        with open(filename, 'rb') as fh:
-            response = HttpResponse(
-                fh.read(), content_type="application/vnd.ms-excel")
-            response['Content-Disposition'] = 'inline; filename=' + \
-                os.path.basename(filename)
-        default_storage.delete(filename)
-        return response
+        return render(request, "quizapp/result_page.html", {"text": email_text})
     else:
         if not quiz.published_date:
             return render(request, "quizapp/no_result.html", {})
@@ -99,15 +89,9 @@ def evaluate_quiz(request, primkey):
         email_text += "/"
         email_text += str(len(questions))
         email_text += "\n"
-        filename = "/home/deepashah/deepashah.pythonanywhere.com/media/eval_quiz_" + \
-            str(primkey) + "_user_" + str(request.user.pk) + ".txt"
-        f = open(filename, "w")
-        f.write(email_text)
-        f.close()
-        with open(filename, 'rb') as fh:
-            response = HttpResponse(
-                fh.read(), content_type="application/vnd.ms-excel")
-            response['Content-Disposition'] = 'inline; filename=' + \
-                os.path.basename(filename)
-        default_storage.delete(filename)
-        return response
+        score = (num_correct * 10) // len(questions)
+        if not request.user in quiz.evaluated_users.all():
+            request.user.profile.score += score
+            request.user.profile.save()
+        quiz.evaluated_users.add(request.user)
+        return render(request, "quizapp/result_page.html", {"text": email_text, "score": score})

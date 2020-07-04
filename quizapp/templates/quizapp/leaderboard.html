@@ -1,0 +1,15 @@
+{% extends 'quizapp/base.html' %}
+
+{% block content %}
+	{% if user.is_authenticated%}
+        {% for prof in profiles %}
+        {% if not prof.user.is_staff %}
+        	<h2>
+                {{prof.user.username}} : {{prof.score}}
+            </h2>
+        {% endif %}
+        {% endfor %}
+    {%else%}
+        <h2>Please <a href="{% url 'login' %}">login</a> to access content</h2>
+    {%endif%}
+{% endblock %}

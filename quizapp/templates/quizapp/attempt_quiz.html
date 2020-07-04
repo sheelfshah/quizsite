@@ -2,13 +2,13 @@
 {% block content %}
 {% if user.is_authenticated%}
 	<h2>{{quiz.title}}</h2>
+	{% if not quiz.published_date %}
 	<h3>
 		You are about to attempt this quiz.
 		Your timer will start as soon as you press the link below.
 		<br>
 		Good Luck!
 	</h3>
-	{% if not quiz.published_date %}
 	<h4>
 	<a href="{% url 'attempt_question' primkey=question.pk%}">
 	    Attempt Quiz
@@ -29,6 +29,11 @@
 	</a>
 	</h4>
 	{% elif quiz.published_date %}
+	<h3>
+		The results for this are already out.
+		<br>
+		You can no longer attempt the quiz.
+	</h3>
 	<h4>
 	<a href="{% url 'quiz_evaluate' primkey=quiz.pk%}">
 	    View Result

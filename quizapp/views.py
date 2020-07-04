@@ -54,3 +54,9 @@ def false_login(request):
 def logout_user(request):
     logout(request)
     return redirect('homepage')
+
+
+@login_required
+def leaderboard(request):
+    profiles = Profile.objects.all().order_by("-score")
+    return render(request, "quizapp/leaderboard.html", {"profiles": profiles})

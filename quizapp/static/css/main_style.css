@@ -170,3 +170,29 @@ input{
     border-width: 1px;
     border-radius: 6px;
 }
+
+@keyframes score_animation {
+  0% {
+    opacity: 1;
+    right: -140px;
+    top: 100px;
+  }
+  100% {
+    opacity: 0;
+    right: -140px;
+    top: -130px;
+    visibility: hidden;
+  }
+}
+
+
+.quiz_score h1 {
+    color: #33ABF9  ;
+    float: right;
+    position: absolute;
+    animation-name: score_animation;
+    animation-delay: 2s;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+}

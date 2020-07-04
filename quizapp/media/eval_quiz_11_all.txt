@@ -1,0 +1,201 @@
+Demo Quiz for all
+
+sheelfshah
+Q1 (the other titles will be tips)
+How does this website look ?
+You answered correctly! 
+Correct option(s): 
+	Incredible
+Chosen option(s): 
+	Incredible
+
+Aarit.shah
+Q1 (the other titles will be tips)
+How does this website look ?
+You answered correctly! 
+Correct option(s): 
+	Incredible
+Chosen option(s): 
+	Incredible
+
+SOHAMMEHTA
+Q1 (the other titles will be tips)
+How does this website look ?
+Your answer was incorrect! 
+Correct option(s): 
+	Incredible
+Chosen option(s): 
+	Good
+
+Faria
+Q1 (the other titles will be tips)
+How does this website look ?
+Your answer was incorrect! 
+Correct option(s): 
+	Incredible
+Chosen option(s): 
+	Good
+
+Avisampat
+Q1 (the other titles will be tips)
+How does this website look ?
+You answered correctly! 
+Correct option(s): 
+	Incredible
+Chosen option(s): 
+	Incredible
+
+Tarangsenghani
+Q1 (the other titles will be tips)
+How does this website look ?
+You answered correctly! 
+Correct option(s): 
+	Incredible
+Chosen option(s): 
+	Incredible
+
+Bhadra17
+Q1 (the other titles will be tips)
+How does this website look ?
+You answered correctly! 
+Correct option(s): 
+	Incredible
+Chosen option(s): 
+	Incredible
+
+sheelfshah
+Never go back during a quiz, or hit refresh
+Can there be multiple answers to a question?
+You answered correctly! 
+Correct option(s): 
+	Yes
+	Yes
+Chosen option(s): 
+	Yes
+	Yes
+
+Aarit.shah
+Never go back during a quiz, or hit refresh
+Can there be multiple answers to a question?
+Your answer was incorrect! 
+Correct option(s): 
+	Yes
+	Yes
+Chosen option(s): 
+	Yes
+
+SOHAMMEHTA
+Never go back during a quiz, or hit refresh
+Can there be multiple answers to a question?
+Your answer was incorrect! 
+Correct option(s): 
+	Yes
+	Yes
+Chosen option(s): 
+	No
+
+Faria
+Never go back during a quiz, or hit refresh
+Can there be multiple answers to a question?
+Your answer was incorrect! 
+Correct option(s): 
+	Yes
+	Yes
+Chosen option(s): 
+	No
+	Yes
+
+Avisampat
+Never go back during a quiz, or hit refresh
+Can there be multiple answers to a question?
+Your answer was incorrect! 
+Correct option(s): 
+	Yes
+	Yes
+Chosen option(s): 
+	No
+
+Tarangsenghani
+Never go back during a quiz, or hit refresh
+Can there be multiple answers to a question?
+You answered correctly! 
+Correct option(s): 
+	Yes
+	Yes
+Chosen option(s): 
+	Yes
+	Yes
+
+Bhadra17
+Never go back during a quiz, or hit refresh
+Can there be multiple answers to a question?
+Your answer was incorrect! 
+Correct option(s): 
+	Yes
+	Yes
+Chosen option(s): 
+	No
+
+sheelfshah
+The question auto-submits when the timer hits zero
+The results section is plain text and isn't too good looking. Would you like a better results page with graphs and analytics?
+Your answer was incorrect! 
+Correct option(s): 
+	No, mehnat is bad for health
+Chosen option(s): 
+	Yes, stop being lazy, creator !
+
+Aarit.shah
+The question auto-submits when the timer hits zero
+The results section is plain text and isn't too good looking. Would you like a better results page with graphs and analytics?
+Your answer was incorrect! 
+Correct option(s): 
+	No, mehnat is bad for health
+Chosen option(s): 
+	Yes, stop being lazy, creator !
+
+SOHAMMEHTA
+The question auto-submits when the timer hits zero
+The results section is plain text and isn't too good looking. Would you like a better results page with graphs and analytics?
+Your answer was incorrect! 
+Correct option(s): 
+	No, mehnat is bad for health
+Chosen option(s): 
+	None
+
+Faria
+The question auto-submits when the timer hits zero
+The results section is plain text and isn't too good looking. Would you like a better results page with graphs and analytics?
+You answered correctly! 
+Correct option(s): 
+	No, mehnat is bad for health
+Chosen option(s): 
+	No, mehnat is bad for health
+
+Avisampat
+The question auto-submits when the timer hits zero
+The results section is plain text and isn't too good looking. Would you like a better results page with graphs and analytics?
+Your answer was incorrect! 
+Correct option(s): 
+	No, mehnat is bad for health
+Chosen option(s): 
+	Yes, stop being lazy, creator !
+
+Tarangsenghani
+The question auto-submits when the timer hits zero
+The results section is plain text and isn't too good looking. Would you like a better results page with graphs and analytics?
+You answered correctly! 
+Correct option(s): 
+	No, mehnat is bad for health
+Chosen option(s): 
+	No, mehnat is bad for health
+
+Bhadra17
+The question auto-submits when the timer hits zero
+The results section is plain text and isn't too good looking. Would you like a better results page with graphs and analytics?
+Your answer was incorrect! 
+Correct option(s): 
+	No, mehnat is bad for health
+Chosen option(s): 
+	Yes, stop being lazy, creator !
+

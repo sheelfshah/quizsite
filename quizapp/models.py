@@ -7,6 +7,7 @@ class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="profile")
     email = models.EmailField(max_length=254)
+    score = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
@@ -16,6 +17,8 @@ class Quiz(models.Model):
     title = models.CharField(max_length=100)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    evaluated_users = models.ManyToManyField(
+        User, related_name="evaluated_quizzes")
 
     def __str__(self):
         return self.title

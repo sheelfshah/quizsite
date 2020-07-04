@@ -27,4 +27,5 @@ urlpatterns = [
     path('question/<int:primkey>/attempt',
          quiz_attempt_views.attempt_question, name="attempt_question"),
     path('choice/<int:primkey>/edit', quiz_views.edit_choice, name="edit_choice"),
+    path('leaderboard', views.leaderboard, name="leaderboard"),
 ]
