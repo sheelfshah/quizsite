@@ -7,7 +7,7 @@
 	{% for choice in choices%}
 		<h3>
 			<a href="{% url 'edit_choice' primkey=choice.pk%}">
-				{{choice.choice_text | safe}}
+				{{choice.choice_text}}
 			</a>
 		</h3>
 	{% endfor %}
