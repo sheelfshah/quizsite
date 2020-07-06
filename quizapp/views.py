@@ -59,4 +59,7 @@ def logout_user(request):
 @login_required
 def leaderboard(request):
     profiles = Profile.objects.all().order_by("-score")
-    return render(request, "quizapp/leaderboard.html", {"profiles": profiles})
+    leaderboard_dict = {}
+    for i in range(len(profiles)):
+        leaderboard_dict[i + 1] = profiles[i]
+    return render(request, "quizapp/leaderboard.html", {"profiles": leaderboard_dict})

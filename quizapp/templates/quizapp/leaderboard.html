@@ -1,15 +1,86 @@
-{% extends 'quizapp/base.html' %}
-
-{% block content %}
-	{% if user.is_authenticated%}
-        {% for prof in profiles %}
-        {% if not prof.user.is_staff %}
-        	<h2>
-                {{prof.user.username}} : {{prof.score}}
-            </h2>
-        {% endif %}
-        {% endfor %}
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deepa Shah's Tutions</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/main_style.css' %}">
+</head>
+<body>
+    {% if user.is_authenticated%}
+    <div style="background-color: black;">
+        <table  width="100%">
+            <tr>
+                <td></td>
+                <td><h1 style="font-size: 36pt">
+                <a href="/" style="color: white;" title="Home">
+                    Home
+                </a></h1></td>
+            </tr>
+            <tr>
+                <td><h1><u>Rank</u></h1></td>
+                <td><h1><u>Username</u></h1></td>
+                <td><h1><u>Score</u></h1></td>
+            </tr>
+            {% for pos, prof in profiles.items %}
+            {% if not prof.user.is_staff %}
+                {% if pos <= 3 %}
+                <tr>
+                    <td class="glowmore">
+                        <h2>{{pos}}</h2>
+                    </td>
+                    <td class="glowmore">
+                    	<h2>
+                            {{prof.user.username.upper}}
+                        </h2>
+                    </td>
+                    <td class="glowmore">
+                        <h2>
+                            {{prof.score}}
+                        </h2>
+                    </td>
+                </tr>
+                {% elif pos <= 5 %}
+                <tr>
+                    <td class="glow">
+                        <h2>{{pos}}</h2>
+                    </td>
+                    <td class="glow">
+                        <h2>
+                            {{prof.user.username.upper}}
+                        </h2>
+                    </td>
+                    <td class="glow">
+                        <h2>
+                            {{prof.score}}
+                        </h2>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>
+                        <h2>{{pos}}</h2>
+                    </td>
+                    <td>
+                        <h2>
+                            {{prof.user.username.upper}}
+                        </h2>
+                    </td>
+                    <td>
+                        <h2>
+                            {{prof.score}}
+                        </h2>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+        </table>
+    </div>
     {%else%}
         <h2>Please <a href="{% url 'login' %}">login</a> to access content</h2>
     {%endif%}
-{% endblock %}
+</body>
+</html>
