@@ -4,7 +4,7 @@
 	<h1><u><center>{{question.title}}</center></u></h1>
 		{% if not attempted %}
 		<div class="attempt">
-			<h2>{{question.question_text}}</h2>
+			<h2>{{question.question_text | safe}}</h2>
 			<br>
 			<h3>
 				<div class="attempt-form-super">
