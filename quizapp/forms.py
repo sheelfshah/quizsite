@@ -29,7 +29,7 @@ class QuestionForm(forms.ModelForm):
 
     class Meta:
         model = Question
-        fields = {'title', 'question_text', 'time'}
+        fields = {'title', 'question_text', 'time', 'marks'}
 
 
 class ChoiceForm(forms.ModelForm):

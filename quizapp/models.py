@@ -32,6 +32,7 @@ class Question(models.Model):
     title = models.CharField(max_length=100)
     question_text = models.CharField(max_length=1000)
     time = models.IntegerField(default=60)
+    marks = models.IntegerField(default=1)
     quiz = models.ForeignKey(
         Quiz, on_delete=models.CASCADE, related_name="questions")
     attempters = models.ManyToManyField(

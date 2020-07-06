@@ -25,6 +25,8 @@ def get_email_text(question, correct_choices, chosen_choices):
     email_text += question.title
     email_text += "\n"
     email_text += question.question_text
+    email_text += "\t"
+    email_text += str(question.marks)
     email_text += "\n"
     if correct_choices == chosen_choices:
         email_text += "You answered correctly! \n"
@@ -75,6 +77,7 @@ def evaluate_quiz(request, primkey):
         email_text += "\n"
         email_text += "\n"
         num_correct = 0
+        total = 0
         for question in questions:
             correct_choices, chosen_choices = evaluate_question_for_user(
                 question, request.user)
@@ -83,15 +86,16 @@ def evaluate_quiz(request, primkey):
             email_text += et
             email_text += "\n"
             if crrct:
-                num_correct += 1
+                num_correct += question.marks
+            total += question.marks
         email_text += "\nYour score: \n"
         email_text += str(num_correct)
         email_text += "/"
-        email_text += str(len(questions))
+        email_text += str(total)
         email_text += "\n"
-        score = (num_correct * 10) // len(questions)
+        score = num_correct
         if not request.user in quiz.evaluated_users.all():
             request.user.profile.score += score
             request.user.profile.save()
         quiz.evaluated_users.add(request.user)
-        return render(request, "quizapp/result_page.html", {"text": email_text, "score": score})
+        return render(request, "quizapp/result_page.html", {"text": email_text, "score": score, "total": total})
