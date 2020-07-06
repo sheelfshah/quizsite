@@ -5,8 +5,12 @@
     <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
         <h2>Enter Details Here</h2>
-        {{user_form.as_p}}
-        <input class="button" type="submit" value="Login" />
+        <h4>
+        	{{user_form.as_p}}
+    	</h4>
+    	<h4>
+        	<input class="button" type="submit" value="Login" />
+        </h4>
         <h3>Don't have an account, sign up <a href="{%url 'register'%}">here</a></h3>
     </form>
 {% endblock %}

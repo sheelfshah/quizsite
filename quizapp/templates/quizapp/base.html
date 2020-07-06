@@ -13,7 +13,7 @@
 		{% if user.is_authenticated%}
             <p class="top-menu">
                 <h2 style="float: right">Hello {{ user.username }}
-                    <small>(<a href="{% url 'logout' %}">Log out</a>)</small>
+                    <small>(<a href="{% url 'logout' %}" id="logout_link">Log out</a>)</small>
                 </h2>
             </p>
             <h2>
