@@ -17,21 +17,21 @@
                 </h2>
             </p>
             <h2>
-                <a href="{% url 'leaderboard' %}" class="top-menu">
+                <a href="{% url 'leaderboard' %}" class="top-menu" title="Leaderboard">
                     <span class="glyphicon glyphicon-list-alt"></span>
                 </a>
             </h2>
             {% if user.is_staff %}
                 <h2>
-                    <a href="{% url 'quiz_new' %}" class="top-menu">
+                    <a href="{% url 'quiz_new' %}" class="top-menu" title="New Quiz">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
                 </h2>
             {% endif %}
         {%else%}
-            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            <a href="{% url 'login' %}" class="top-menu" title="Login"><span class="glyphicon glyphicon-lock"></span></a>
         {%endif%}
-		<h1><a href="/">Deepa's Tutions</a></h1>
+		<h1><a href="/" title="Home">Deepa's Tutions</a></h1>
 	</div>
 	<div class="content">
         <div class="row">
