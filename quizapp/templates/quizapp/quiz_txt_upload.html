@@ -1,0 +1,14 @@
+{% extends 'quizapp/base.html'%}
+{% block content %}
+{% if user.is_staff %}
+<h2 id="heading">Upload TXT File</h2>
+<form action="{% url 'quiz_txt_upload' %}" method="POST" enctype="multipart/form-data">
+	{%csrf_token%}
+	<input type = "file" name = 'filename' required="True"/ style="float: left;" class="button">
+	<br>
+	<input type="submit" value="Upload" id="upload"/ class="button">
+</form>
+{%else%}
+<h2>You do not have access to this page. Return to where you belong</h2>
+{%endif%}
+{% endblock %}

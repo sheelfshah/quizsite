@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views
 from . import quiz_views
-from . import quiz_attempt_views, quiz_result_views
+from . import quiz_attempt_views, quiz_result_views, txt_upload_views
 
 urlpatterns = [
     path('', views.index, name='homepage'),
@@ -28,4 +28,5 @@ urlpatterns = [
          quiz_attempt_views.attempt_question, name="attempt_question"),
     path('choice/<int:primkey>/edit', quiz_views.edit_choice, name="edit_choice"),
     path('leaderboard', views.leaderboard, name="leaderboard"),
+    path('quiz/upload', txt_upload_views.upload_quiz, name="quiz_txt_upload"),
 ]

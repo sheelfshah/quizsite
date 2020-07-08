@@ -1,8 +1,10 @@
 title
 2
 qt
-qtext
+qtext<sup>2</sup>&radic;
+60
 1,2,3
 qt
 qtext
+50
 3,4,5
