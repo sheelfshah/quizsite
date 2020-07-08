@@ -28,15 +28,15 @@
             {% if not prof.user.is_staff %}
                 {% if pos <= 3 %}
                 <tr>
-                    <td class="glowmore">
+                    <td class="glowmore" style="color: white;">
                         <h2>{{pos}}</h2>
                     </td>
-                    <td class="glowmore">
+                    <td class="glowmore" style="color: white;">
                     	<h2>
                             {{prof.user.username.upper}}
                         </h2>
                     </td>
-                    <td class="glowmore">
+                    <td class="glowmore" style="color: white;">
                         <h2>
                             {{prof.score}}
                         </h2>
