@@ -18,6 +18,7 @@ import os
 		question text
         question time
 		choice one,choice two,choice three
+        0,1,0
 """
 
 
@@ -33,10 +34,12 @@ def make_quiz(title, questions):
         question.time = q[2]
         question.quiz = quiz
         question.save()
-        for c in q[3]:
+        for i in range(len(q[3])):
+            c = q[3][i]
             choice = Choice()
             choice.choice_text = c
             choice.question = question
+            choice.is_correct = q[4][i]
             choice.save()
     return
 
@@ -49,7 +52,8 @@ def file_information_extract(f):
         question_text = f.readline().rstrip()
         question_time = int(f.readline().rstrip())
         choices = f.readline().rstrip().split(',')
-        yield quiz_title, question_title, question_text, question_time, choices
+        correct_ans = bool(f.readline().rstrip().split(','))
+        yield quiz_title, question_title, question_text, question_time, choices, correct_ans
 
 
 @login_required
@@ -64,9 +68,9 @@ def upload_quiz(request):
         with open(path) as a:
             quiz_title = ""
             questions = []
-            for quiz_t, qt, qtext, qtime, choices in file_information_extract(a):
+            for quiz_t, qt, qtext, qtime, choices, correct_ans in file_information_extract(a):
                 quiz_title = quiz_t
-                questions.append([qt, qtext, qtime, choices])
+                questions.append([qt, qtext, qtime, choices, correct_ans])
             make_quiz(quiz_title, questions)
         return redirect('homepage')
     return render(request, 'quizapp/quiz_txt_upload.html')
