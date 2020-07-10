@@ -57,7 +57,7 @@ def upload_quiz(request):
     if(request.method == "POST"):
         txt_file = request.FILES['filename']
         path = os.path.join(os.path.dirname(
-            os.path.abspath(__file__)), "media\\a.txt")
+            os.path.abspath(__file__)), "media/a.txt")
         with open(path, "wb") as a:
             for chunk in txt_file.chunks():
                 a.write(chunk)
