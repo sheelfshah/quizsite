@@ -1,0 +1,46 @@
+Chpt 1 - Revision Quiz 2
+11
+Q1
+2<sup>-3</sup> = ?
+60
+0.5,0.25,0.125,8
+Q2
+5<sup>-3</sup> = ?
+55
+125,0.04,0.008
+Q3
+4<sup>-1</sup> as a decimal is
+50
+1/4,0.5,0.25
+Q4
+4 to the power of x = 64.   x = ?
+60
+1,2,3,4
+Q5
+4 to the power of x = 256.   x = ?
+60
+64,2,3,4
+Q6 (More than one correct)
+343 = a<sup>b</sup>. a and b can be
+60
+1,2,3,4,5,6,7
+Q7
+5<sup>-2</sup> / 5<sup>-6</sup> = 5<sup>?</sup>
+60
+-8,-4,4,8
+Q8
+4<sup>3</sup> x 4<sup>0</sup> = 2<sup>?</sup>
+60
+3,4,5,6
+Q9
+7<sup>-5</sup> / (7<sup>6</sup> x 7<sup>2</sup>) = 7<sup>?</sup>
+80
+3,-3,-13
+Q10
+a<sup>9</sup> / a<sup>7</sup> = a<sup>?</sup>
+30
+-2,-1,1,2
+Q11 (More than one correct)
+6<sup>1</sup> + 6<sup>-1</sup> - 6<sup>-2</sup>) = a / b in its simplest form.   a and b can be
+150
+216,223,6,221,36
