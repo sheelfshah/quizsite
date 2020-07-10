@@ -39,7 +39,7 @@ def make_quiz(title, questions):
             choice = Choice()
             choice.choice_text = c
             choice.question = question
-            choice.is_correct = q[4][i]
+            choice.is_correct = bool(int(q[4][i]))
             choice.save()
     return
 
@@ -52,7 +52,7 @@ def file_information_extract(f):
         question_text = f.readline().rstrip()
         question_time = int(f.readline().rstrip())
         choices = f.readline().rstrip().split(',')
-        correct_ans = bool(f.readline().rstrip().split(','))
+        correct_ans = f.readline().rstrip().split(',')
         yield quiz_title, question_title, question_text, question_time, choices, correct_ans
 
 
