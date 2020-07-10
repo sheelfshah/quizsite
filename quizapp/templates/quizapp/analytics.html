@@ -1,0 +1,12 @@
+{% extends 'quizapp/base.html' %}
+
+{% block content %}
+	{% if user.is_authenticated%}
+	<center>
+        <img src="data:image/png;base64,{{ data }}" height="500" width="500">
+        <img src="data:image/png;base64,{{ data2 }}" height="500" width="750">
+    </center>
+    {%else%}
+        <h2>Please <a href="{% url 'login' %}">login</a> to access content</h2>
+    {%endif%}
+{% endblock %}

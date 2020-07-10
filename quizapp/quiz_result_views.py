@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Question, Choice, Profile, Quiz
@@ -7,6 +9,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 from django.core.files.storage import default_storage
 import os
+import io
+import urllib
+import base64
+import matplotlib.pyplot as plt
 
 
 def evaluate_question_for_user(question, user):
@@ -99,3 +105,75 @@ def evaluate_quiz(request, primkey):
             request.user.profile.save()
         quiz.evaluated_users.add(request.user)
         return render(request, "quizapp/result_page.html", {"text": email_text, "score": score, "total": total})
+
+
+def create_analytics(primkey):
+    quiz = get_object_or_404(Quiz, pk=primkey)
+    questions = quiz.questions.all()
+    user_scores = {}
+    total_marks = 0
+    question_correct = {}
+    for question in questions:
+        num_people_crrct = 0
+        total_marks += question.marks
+        for user in question.attempters.all():
+            correct_choices, chosen_choices = evaluate_question_for_user(
+                question, user)
+            crrct = correct_choices == chosen_choices
+            if not user.pk in user_scores.keys():
+                user_scores[user.pk] = 0
+            if crrct:
+                user_scores[user.pk] += question.marks
+                num_people_crrct += 1
+        question_correct[question.pk] = num_people_crrct / \
+            len(question.attempters.all())
+    return user_scores, question_correct, total_marks
+
+
+@login_required
+def show_analytics(request, primkey):
+    user_scores, question_correct, total_marks = create_analytics(primkey)
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    people = ['You', 'Average', 'Topper']
+    score_sum = 0
+    max_score = 0
+    for pk, score in user_scores.items():
+        score_sum += score
+        max_score = max(score, max_score)
+    try:
+        if request.user.is_staff:
+            scores = [0, score_sum / len(user_scores), max_score]
+        else:
+            scores = [user_scores[request.user.pk],
+                      score_sum / len(user_scores), max_score]
+    except:
+        scores = [0, 0, 0]
+    ax.bar(people, scores, color=(1, 0, 0, 0.9), edgecolor='black')
+    ax.set_ylabel('Scores')
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+    # first over, second starts
+    fig2 = plt.figure()
+    ax2 = fig2.add_subplot(111)
+    questions = []
+    qscores = []
+    for pk, qs in question_correct.items():
+        q = get_object_or_404(Question, pk=pk)
+        questions.append(q.title[:4])
+        qscores.append(qs * 100)
+    ax2.bar(questions, qscores, color=(0, 1, 0, 0.9), edgecolor='black')
+    ax2.set_ylabel('Accuracy %')
+    buf2 = io.BytesIO()
+    fig2.savefig(buf2, format='png')
+    buf2.seek(0)
+    string2 = base64.b64encode(buf2.read())
+    uri2 = urllib.parse.quote(string2)
+    response = render(request, "quizapp/analytics.html",
+                      {"data": uri, "data2": uri2})
+    plt.close(fig)
+    plt.close(fig2)
+    return response

@@ -14,6 +14,12 @@
 	    Attempt Quiz
 	</a>
 	</h4>
+	{% else %}
+	<h4>
+	<a href="{% url 'quiz_analytics' primkey=quiz.pk%}">
+	    View Analytics
+	</a>
+	</h4>
 	{% endif %}
 	<h4>
 	</h4>

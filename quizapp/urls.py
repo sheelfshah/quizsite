@@ -20,6 +20,8 @@ urlpatterns = [
          quiz_attempt_views.submit_quiz, name="quiz_end"),
     path('quiz/<int:primkey>/evaluate',
          quiz_result_views.evaluate_quiz, name="quiz_evaluate"),
+    path('quiz/<int:primkey>/analytics',
+         quiz_result_views.show_analytics, name="quiz_analytics"),
     path('question/<int:primkey>/add_choice',
          quiz_views.add_choice, name="add_choice"),
     path('question/<int:primkey>/edit',
