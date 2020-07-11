@@ -2,6 +2,12 @@
   --accent-color: #2000ff;
 }
 
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*=""] {
+    width: 100%;
+  }
+}
 .page-header {
     background-color: var(--accent-color);
     margin-top: 0;
