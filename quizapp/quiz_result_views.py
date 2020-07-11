@@ -13,6 +13,7 @@ import io
 import urllib
 import base64
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 
 
 def evaluate_question_for_user(question, user):
@@ -107,12 +108,13 @@ def evaluate_quiz(request, primkey):
         return render(request, "quizapp/result_page.html", {"text": email_text, "score": score, "total": total})
 
 
-def create_analytics(primkey):
+def create_analytics(primkey, current_user):
     quiz = get_object_or_404(Quiz, pk=primkey)
     questions = quiz.questions.all()
     user_scores = {}
     total_marks = 0
     question_correct = {}
+    user_correct = {}
     for question in questions:
         num_people_crrct = 0
         total_marks += question.marks
@@ -125,15 +127,21 @@ def create_analytics(primkey):
             if crrct:
                 user_scores[user.pk] += question.marks
                 num_people_crrct += 1
+            if user == current_user:
+                user_correct[question.pk] = crrct
         question_correct[question.pk] = num_people_crrct / \
             len(question.attempters.all())
-    return user_scores, question_correct, total_marks
+    return user_scores, question_correct, total_marks, user_correct
 
 
 @login_required
 def show_analytics(request, primkey):
-    user_scores, question_correct, total_marks = create_analytics(primkey)
+    user_scores, question_correct, total_marks, user_correct = create_analytics(
+        primkey, request.user)
+    plt.rcParams['xtick.labelsize'] = 15
+    plt.rcParams['ytick.labelsize'] = 15
     fig = plt.figure()
+    fig.suptitle('Comparision of scores', fontsize=22)
     ax = fig.add_subplot(111)
     people = ['You', 'Average', 'Topper']
     score_sum = 0
@@ -150,23 +158,38 @@ def show_analytics(request, primkey):
     except:
         scores = [0, 0, 0]
     ax.bar(people, scores, color=(1, 0, 0, 0.9), edgecolor='black')
-    ax.set_ylabel('Scores')
+    ax.set_ylabel('Scores', fontsize=18)
+    ax.set_ylim(top=total_marks * 1.1)
     buf = io.BytesIO()
     fig.savefig(buf, format='png')
     buf.seek(0)
     string = base64.b64encode(buf.read())
     uri = urllib.parse.quote(string)
     # first over, second starts
+    plt.rcParams['xtick.labelsize'] = 13
     fig2 = plt.figure()
+    fig2.suptitle('Percent of people who answered correctly', fontsize=22)
     ax2 = fig2.add_subplot(111)
     questions = []
     qscores = []
+    correctly_answered = [False] * len(question_correct.keys())
+    pos = 0
     for pk, qs in question_correct.items():
         q = get_object_or_404(Question, pk=pk)
-        questions.append(q.title[:4])
+        questions.append(q.title[:3])
         qscores.append(qs * 100)
-    ax2.bar(questions, qscores, color=(0, 1, 0, 0.9), edgecolor='black')
-    ax2.set_ylabel('Accuracy %')
+        correctly_answered[pos] = user_correct[pk]
+        pos += 1
+    barlist = ax2.bar(questions, qscores, color=(
+        1, 0, 0, 0.9), edgecolor='black', width=0.8)
+    for i in range(len(correctly_answered)):
+        if correctly_answered[i]:
+            barlist[i].set_facecolor((0, 1, 0, 0.9))
+    ax2.set_ylabel('Accuracy %', fontsize=18)
+    ax2.set_ylim(top=100)
+    C = mpatches.Patch(color=(0, 1, 0, 0.9), label='Correct')
+    IC = mpatches.Patch(color=(1, 0, 0, 0.9), label='Incorrect')
+    ax2.legend(handles=[C, IC], loc=1, title="Your answer", fancybox=True)
     buf2 = io.BytesIO()
     fig2.savefig(buf2, format='png')
     buf2.seek(0)
