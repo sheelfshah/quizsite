@@ -176,9 +176,12 @@ def show_analytics(request, primkey):
     pos = 0
     for pk, qs in question_correct.items():
         q = get_object_or_404(Question, pk=pk)
-        questions.append(q.title[:3])
+        questions.append(q.title[:4])
         qscores.append(qs * 100)
-        correctly_answered[pos] = user_correct[pk]
+        try:
+            correctly_answered[pos] = user_correct[pk]
+        except:
+            correctly_answered[pos] = False
         pos += 1
     barlist = ax2.bar(questions, qscores, color=(
         1, 0, 0, 0.9), edgecolor='black', width=0.8)
