@@ -79,11 +79,19 @@
             {% endfor %}
         </table>
         {% if user.is_staff %}
-            <h2><a href="{% url 'resetscores' %}">Reset</a></h2>
+            <button onclick="confirmation()">Reset</button>
+            <h2><a href="{% url 'resetscores' %}" id="resetlink" style="display: none;">Reset Link</a></h2>
         {% endif %}
     </div>
     {%else%}
         <h2>Please <a href="{% url 'login' %}">login</a> to access content</h2>
     {%endif%}
+<script>
+function confirmation() {
+  if (confirm("Are you sure you want to reset ?")) {
+    document.getElementById("resetlink").click();
+  }
+}
+</script>
 </body>
 </html>
