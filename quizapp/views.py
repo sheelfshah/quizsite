@@ -60,6 +60,19 @@ def logout_user(request):
 def leaderboard(request):
     profiles = Profile.objects.all().order_by("-score")
     leaderboard_dict = {}
-    for i in range(len(profiles)):
-        leaderboard_dict[i + 1] = profiles[i]
+    i = 0
+    for prof in profiles:
+        if not prof.user.is_staff:
+            leaderboard_dict[i + 1] = prof
+        else:
+            i -= 1
+        i += 1
     return render(request, "quizapp/leaderboard.html", {"profiles": leaderboard_dict})
+
+
+@login_required
+def reset_scores(request):
+    for prof in Profile.objects.all():
+        prof.score = 0
+        prof.save()
+    return redirect("leaderboard")

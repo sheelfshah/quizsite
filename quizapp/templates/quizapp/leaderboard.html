@@ -78,6 +78,9 @@
             {% endif %}
             {% endfor %}
         </table>
+        {% if user.is_staff %}
+            <h2><a href="{% url 'resetscores' %}">Reset</a></h2>
+        {% endif %}
     </div>
     {%else%}
         <h2>Please <a href="{% url 'login' %}">login</a> to access content</h2>

@@ -31,4 +31,5 @@ urlpatterns = [
     path('choice/<int:primkey>/edit', quiz_views.edit_choice, name="edit_choice"),
     path('leaderboard', views.leaderboard, name="leaderboard"),
     path('quiz/upload', txt_upload_views.upload_quiz, name="quiz_txt_upload"),
+    path('resetscores', views.reset_scores, name="resetscores"),
 ]
