@@ -131,6 +131,12 @@ def create_analytics(primkey, current_user):
                 user_correct[question.pk] = crrct
         question_correct[question.pk] = num_people_crrct / \
             len(question.attempters.all())
+    for pk, score in user_scores.items():
+        user = get_object_or_404(User, pk=pk)
+        if not user in quiz.evaluated_users.all():
+            user.profile.score += score
+            user.profile.save()
+            quiz.evaluated_users.add(user)
     return user_scores, question_correct, total_marks, user_correct
 
 
@@ -156,7 +162,7 @@ def show_analytics(request, primkey):
             scores = [user_scores[request.user.pk],
                       score_sum / len(user_scores), max_score]
     except:
-        scores = [0, 0, 0]
+        scores = [0, 0, total_marks]
     ax.bar(people, scores, color=(1, 0, 0, 0.9), edgecolor='black')
     ax.set_ylabel('Scores', fontsize=18)
     ax.set_ylim(top=total_marks * 1.1)
