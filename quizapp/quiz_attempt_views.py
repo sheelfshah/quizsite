@@ -14,7 +14,7 @@ def attempt_quiz(request, primkey):
     if(request.method == "POST"):
         return redirect('attempt_question', primkey=questions[0].pk)
     else:
-        return render(request, 'quizapp/attempt_quiz.html', {"quiz": quiz, "question": questions[0]})
+        return render(request, 'quizapp/attempt_quiz.html', {"quiz": quiz, "question": questions[0], "length": len(questions)})
 
 
 @login_required
@@ -61,4 +61,4 @@ def attempt_question(request, primkey):
         form = AttemptForm(choices)
     return render(request, 'quizapp/attempt_question.html', {"form": form, "question": question,
                                                              "next": q_next_id, "attempted": prev_attempt,
-                                                             "time": question.time})
+                                                             "time": question.time, "marks": question.marks})

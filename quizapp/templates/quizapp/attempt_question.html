@@ -2,6 +2,7 @@
 {% block content %}
 {% if user.is_authenticated%}
 	<h1><u><center>{{question.title}}</center></u></h1>
+	<h1><small>{{marks}} points</small></h1>
 		{% if not attempted %}
 		<div class="attempt">
 			<h2>{{question.question_text | safe}}</h2>

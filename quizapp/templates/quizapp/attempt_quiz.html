@@ -2,6 +2,7 @@
 {% block content %}
 {% if user.is_authenticated%}
 	<h2>{{quiz.title}}</h2>
+	<h2><small>{{ length }} questions</small></h2>
 	{% if not quiz.published_date %}
 	<h3>
 		You are about to attempt this quiz.

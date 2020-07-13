@@ -10,4 +10,4 @@ Features:
   Variable timer for every question.
   Personalized analytics.
   
-TODO: See question number, number of questions, marks of the current question.
+TODO: non-mcq questions(difficult)
