@@ -3,6 +3,7 @@ matplotlib.use('Agg')
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Question, Choice, Profile, Quiz
+from django.contrib.auth.models import User
 from .forms import QuizForm, QuestionForm, ChoiceForm, AttemptForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -134,9 +135,12 @@ def create_analytics(primkey, current_user):
     for pk, score in user_scores.items():
         user = get_object_or_404(User, pk=pk)
         if not user in quiz.evaluated_users.all():
-            user.profile.score += score
-            user.profile.save()
-            quiz.evaluated_users.add(user)
+            try:
+                user.profile.score += score
+                user.profile.save()
+                quiz.evaluated_users.add(user)
+            except:
+                quiz.evaluated_users.add(user)
     return user_scores, question_correct, total_marks, user_correct
 
 
