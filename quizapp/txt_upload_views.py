@@ -1,10 +1,6 @@
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Question, Choice, Profile, Quiz
-from .forms import QuizForm, QuestionForm, ChoiceForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout
-from django.utils import timezone
 import os
 
 """

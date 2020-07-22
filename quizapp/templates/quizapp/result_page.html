@@ -2,9 +2,9 @@
 {% block content %}
 {% if user.is_authenticated %}
 	{% if user.is_staff %}
-		<h2 style="white-space: pre-wrap;">{{text}}</h2>
+		<h2 style="white-space: pre-wrap;">{{text | safe}}</h2>
 	{% else %}
-		<h2 style="white-space: pre-wrap;">{{text}}</h2>
+		<h2 style="white-space: pre-wrap;">{{text | safe}}</h2>
 		<div class="quiz_score">
 			<h1>{{score}} / {{total}}</h1>
 		</div>
